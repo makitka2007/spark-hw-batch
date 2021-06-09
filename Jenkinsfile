@@ -28,7 +28,7 @@ pipeline {
 
   post {
     always {
-      recordIssues enabledForFailure: true, aggregatingResults: true, tool: checkStyle(pattern: 'target/scalastyle-result.xml')
+      recordIssues enabledForFailure: true, aggregatingResults: true, tools: checkStyle(pattern: 'target/scalastyle-result.xml')
     }
   }
 }
