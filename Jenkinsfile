@@ -23,7 +23,11 @@ pipeline {
       steps {
         sh "sbt scalastyle"
       }
+    }
+  }
 
+  post {
+    always {
       recordIssues enabledForFailure: true, aggregatingResults: true, tool: checkStyle(pattern: 'target/scalastyle-result.xml')
     }
   }
