@@ -1,8 +1,6 @@
 pipeline {
   agent any
 
-  recordIssues enabledForFailure: true, aggregatingResults: true, tool: checkStyle(pattern: 'target/scalastyle-result.xml')
-
   environment {
     SBT_HOME="${tool 'sbt'}"
     PATH="${env.SBT_HOME}/bin:${env.PATH}"
@@ -25,6 +23,8 @@ pipeline {
       steps {
         sh "sbt scalastyle"
       }
+
+      recordIssues enabledForFailure: true, aggregatingResults: true, tool: checkStyle(pattern: 'target/scalastyle-result.xml')
     }
   }
 }
