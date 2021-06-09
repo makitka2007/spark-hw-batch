@@ -11,23 +11,11 @@ pipeline {
       steps {
         sh "sbt compile"
       }
-
-      post {
-        failure {
-          sh "exit 1"
-        }
-      }
     }
 
     stage('Test') {
       steps {
         sh "sbt test"
-      }
-
-      post {
-        failure {
-          sh "exit 1"
-        }
       }
     }
 
@@ -36,11 +24,14 @@ pipeline {
         sh "sbt scalastyle"
       }
 
-      post {
-        failure {
-          sh "exit 1"
-        }
-      }
+      publishHTML (target: [
+          allowMissing: false,
+          alwaysLinkToLastBuild: false,
+          keepAll: true,
+          reportDir: 'target',
+          reportFiles: 'scalastyle-result.xml',
+          reportName: "Scala style report"
+        ])
     }
   }
 }
