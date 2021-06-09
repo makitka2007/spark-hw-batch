@@ -1,10 +1,15 @@
 pipeline {
   agent any
 
+  environment {
+    SBT_HOME="${tool 'sbt'}"
+    PATH="${env.SBT_HOME}/bin:${env.PATH}"
+  }
+
   stages {
-    stage("Compile") {
+    stage('Compile') {
       steps {
-        sbt "compile"
+        sh "sbt compile"
       }
     }
   }
