@@ -10,3 +10,5 @@ libraryDependencies += "org.apache.spark" %% "spark-avro" % "3.1.1"
 
 libraryDependencies += "org.scalactic" %% "scalactic" % "3.2.9"
 libraryDependencies += "org.scalatest" %% "scalatest" % "3.2.9" % "test"
+
+(scalastyleTarget in Compile) := baseDirectory.value / "scalastyle-result.xml"

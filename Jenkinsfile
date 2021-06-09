@@ -1,6 +1,8 @@
 pipeline {
   agent any
 
+  recordIssues enabledForFailure: true, aggregatingResults: true, tool: checkStyle(pattern: 'target/scalastyle-result.xml')
+
   environment {
     SBT_HOME="${tool 'sbt'}"
     PATH="${env.SBT_HOME}/bin:${env.PATH}"
@@ -23,15 +25,6 @@ pipeline {
       steps {
         sh "sbt scalastyle"
       }
-
-      publishHTML (target: [
-          allowMissing: false,
-          alwaysLinkToLastBuild: false,
-          keepAll: true,
-          reportDir: 'target',
-          reportFiles: 'scalastyle-result.xml',
-          reportName: "Scala style report"
-        ])
     }
   }
 }
