@@ -8,7 +8,7 @@ import org.apache.spark.sql.types.{LongType, StringType, StructType}
 import org.apache.spark.sql._
 
 object LoadHotels {
-  val spark: SparkSession = SparkSession.builder.appName("Load Hotels").getOrCreate()
+  lazy val spark: SparkSession = SparkSession.builder.appName("Load Hotels").getOrCreate()
   import spark.implicits._
 
   def getVisitDays(checkin: Date, checkout: Date): Seq[Date] = {
