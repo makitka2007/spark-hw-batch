@@ -18,7 +18,7 @@ object LoadHotels {
 
   val getVisitDaysUDF: UserDefinedFunction = udf(getVisitDays _)
 
-  dsef getInvalidHotels(expedia: DataFrame): Dataset[Row] = {
+  def getInvalidHotels(expedia: DataFrame): Dataset[Row] = {
     val visits = expedia.select($"hotel_id", $"srch_ci", $"srch_co")
     val flattenDates = visits.filter("srch_co > srch_ci")
       .withColumn("visit_date", getVisitDaysUDF($"srch_ci", $"srch_co"))
