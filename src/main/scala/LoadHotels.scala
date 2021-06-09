@@ -11,6 +11,63 @@ object LoadHotels {
   lazy val spark: SparkSession = SparkSession.builder.appName("Load Hotels").getOrCreate()
   import spark.implicits._
 
+  def LongMethod = {
+    0
+    0
+    0
+    0
+    0
+    0
+    0
+    0
+    0
+    0
+    0
+    0
+    0
+    0
+    0
+    0
+    0
+    0
+    0
+    0
+    0
+    0
+    0
+    0
+    0
+    0
+    0
+    0
+    0
+    0
+    0
+    0
+    0
+    0
+    0
+    0
+    0
+    0
+    0
+    0
+    0
+    0
+    0
+    0
+    0
+    0
+    0
+    0
+    0
+    0
+    0
+    0
+    0
+    0
+  }
+
   def getVisitDays(checkin: Date, checkout: Date): Seq[Date] = {
     Iterator.iterate(checkin.toLocalDate)(d => d.plusDays(1)).takeWhile(_.isBefore(checkout.toLocalDate))
       .map(Date.valueOf).toList
