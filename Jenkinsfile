@@ -7,9 +7,21 @@ pipeline {
   }
 
   stages {
-    stage('Compile') {
+    stage('Build') {
       steps {
         sh "sbt compile"
+      }
+    }
+
+    stage('Test') {
+      steps {
+        sh "sbt test"
+      }
+    }
+
+    stage('Scala Style') {
+      steps {
+        sh "sbt scalastyle"
       }
     }
   }
